@@ -30,15 +30,18 @@ export default {
       <AppNavbar></AppNavbar>
 
     </header>
-    <main>
+    <main class="main overflow-x-hidden">
       <router-view>
 
       </router-view>
     </main>
-    <footer>
+    <!-- <footer>
       <AppFooter></AppFooter>
-    </footer>
+    </footer> -->
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+
+
+</style>
