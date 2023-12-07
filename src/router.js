@@ -1,7 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-import AppHome from './pages/AppHome.vue'
-import AppRestaurants from './pages/AppRestaurants.vue'
+import AppHome from './pages/AppHome.vue';
+import AppRestaurants from './pages/AppRestaurants.vue';
+import AppCategories from './pages/AppCategories.vue';
+import AppSpecificRestaurant from './pages/AppSpecificRestaurant.vue';
+
 
 const router = createRouter({
     history: createWebHistory(),
@@ -20,6 +23,16 @@ const router = createRouter({
             path: '/restaurants',
             name:'restaurants',
             component: AppRestaurants
+        },
+        {
+            path: '/categories',
+            name:'categories',
+            component: AppCategories
+        },
+        {
+            path: '/specificRestaurant',
+            name:'specificRestaurant',
+            component: AppSpecificRestaurant
         },
     ],
 

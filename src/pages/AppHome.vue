@@ -15,6 +15,12 @@ export default {
             
         };
     },
+    methods: {
+
+    },
+    created() {
+        
+    },
 
 }
 
@@ -22,7 +28,7 @@ export default {
 
 <template>
     <div class="home">
-        <div class=" bg-primary py-5 px-3">
+        <div class="py-5 px-3">
             <AppHero></AppHero>
         </div>
         <div class="py-5">
@@ -41,8 +47,8 @@ export default {
     border-radius: 10px;
 }
 
-col{
-    padding: 0!important;
+col {
+    padding: 0 !important;
 }
 
 .littleSquare {
@@ -55,7 +61,4 @@ col{
     padding: 10px;
 }
 
-.home {
-    background-color: skyblue;
-}
 </style>

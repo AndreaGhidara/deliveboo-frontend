@@ -1,4 +1,5 @@
 <script>
+import axios from 'axios';
 
 export default {
     name: 'AppRestourants',
@@ -33,16 +34,17 @@ export default {
 </script>
 
 <template>
-    <div>
-        <!-- <h1>Home</h1>
+    <!-- <div>
+        <h1>Home</h1>
         <div class="row justify-content-between">
             <div class="card col-4 mb-4" v-for="restaurant in restaurants" :key="restaurant.id">
                 <img class="img-top img-restaurant p-0" :src="restaurant.photo" alt="">
                 <p>Nome Ristorante: {{ restaurant.name }}</p>
                 <p>Tipologia di Cucina: {{ getTypes(restaurant) }}</p>
             </div>
-        </div> -->
-    </div>
+        </div>
+        <h1>Restaurants</h1>
+    </div> -->
 </template>
 
 <style lang="scss" scoped>

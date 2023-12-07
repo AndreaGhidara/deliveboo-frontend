@@ -24,13 +24,13 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div >
     <header>
 
       <AppNavbar></AppNavbar>
 
     </header>
-    <main class="main overflow-x-hidden">
+    <main class="main overflow-y-auto overflow-x-hidden">
       <router-view>
 
       </router-view>
