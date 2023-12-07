@@ -1,6 +1,6 @@
 <script>
-import AppRestaurants from '../components/AppRestaurants.vue'
-import AppCategories from '../components/AppCategories.vue'
+import AppRestaurants from '../components/AppPartialRestaurants.vue'
+import AppCategories from '../components/AppPartialCategories.vue'
 import AppHero from '../components/AppHero.vue'
 import axios from 'axios';
 

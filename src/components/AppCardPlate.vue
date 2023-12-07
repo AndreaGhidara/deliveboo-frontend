@@ -3,29 +3,34 @@ import { store } from '../data/store';
 
 export default {
     name: 'AppCardPlate',
+    props: {
+        name: String,
+        description: String,
+        price: String
+    },
     data() {
         return {
             store,
-            order : {
-                quantity:1,
-                name:"Carbonara",
-                price:15.59,
+            order: {
+                quantity: 1,
+                name: "Carbonara",
+                price: 15.59,
             }
         }
     },
     methods: {
-        popAlertMaxQt(){
+        popAlertMaxQt() {
 
         },
 
-        calculateCart(){
+        calculateCart() {
 
             let tot = 0
 
             store.cart.map((item) => {
-                tot += item.price ;
+                tot += item.price;
                 console.log(item);
-                
+
             })
 
             store.totalCartPrice = tot
@@ -40,15 +45,15 @@ export default {
             }
         },
 
-        removeQuantity(){
+        removeQuantity() {
             if (this.order.quantity == 1) {
                 this.order.quantity = 1;
             } else {
-                this.order.quantity --
+                this.order.quantity--
             }
         },
 
-        addToCart(){
+        addToCart() {
             const orderCopy = { ...this.order };
 
             orderCopy.price = orderCopy.price * orderCopy.quantity;
@@ -58,7 +63,7 @@ export default {
             this.calculateCart()
         }
     },
-    created() {
+    mounted() {
 
     },
 }
@@ -70,11 +75,13 @@ export default {
             <img src="https://image-tc.galaxy.tf/wijpeg-6vjfv3a8pbx39l41ud7x73arb/cover_wide.jpg?crop=0%2C0%2C1200%2C675"
                 class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Carbonara</h5>
-                <p class="card-text">Guanciale di maiale croccante, pecorino romano, uova, pepe nero</p>
+                <h5 class="card-title text-primary">{{ name }}</h5>
+                <p class="card-text">
+                    {{ description }}
+                </p>
                 <div class="d-flex justify-content-between">
                     <div class="w-50">
-                        {{this.order.price}}&euro;
+                        {{ Number(price).toFixed(2) }}&euro;
                     </div>
                     <div class="d-flex justify-content-between justify-content-sm-end  w-50">
                         <button @click="removeQuantity()" class="menu__icon text-white position-relative">
@@ -102,7 +109,14 @@ export default {
 .card-img-top {
     border-radius: 10px;
 }
-.quantity{
+
+.card-text{
+    height: 120px;
+    max-height: 120px;
+    font-size: 14px;
+}
+
+.quantity {
     width: 50px;
     display: flex;
     justify-content: center;

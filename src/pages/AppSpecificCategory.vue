@@ -2,6 +2,15 @@
 
 export default {
     name: 'AppSpecificCategory.vue',
+    computed(){
+
+        // destination(){
+        //     return sourceData.destination.find(
+        //         (destination) => destination.id == parseInt(this.id)
+        //     )
+        // }
+
+    },
     data() {
         return {
             
@@ -18,7 +27,7 @@ export default {
 
 <template>
     <div>
-        <h1>Categories</h1>
+        <h1>specifc Categories {{ $route.params.id }}</h1>
     </div>
 </template>
 

@@ -4,6 +4,7 @@ import AppHome from './pages/AppHome.vue';
 import AppRestaurants from './pages/AppRestaurants.vue';
 import AppCategories from './pages/AppCategories.vue';
 import AppSpecificRestaurant from './pages/AppSpecificRestaurant.vue';
+import AppSpecificCategory from './pages/AppSpecificCategory.vue';
 
 
 const router = createRouter({
@@ -30,9 +31,16 @@ const router = createRouter({
             component: AppCategories
         },
         {
-            path: '/specificRestaurant',
+            path: '/specificRestaurant/:id',
             name:'specificRestaurant',
-            component: AppSpecificRestaurant
+            component: AppSpecificRestaurant,
+            props:true
+        },
+        {
+            path: '/specifcCategory/:id',
+            name:'specifcCategory',
+            component: AppSpecificCategory,
+            props:true
         },
     ],
 

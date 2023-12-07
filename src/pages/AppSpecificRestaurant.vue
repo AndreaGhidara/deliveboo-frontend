@@ -1,16 +1,38 @@
 <script>
 import AppCardPlate from '../components/AppCardPlate.vue';
+import { store } from '../data/store';
 
 
 export default {
     name: 'AppSpecificRestaurant',
+    computed: {
+        ApiRestaurant() {
+            return `http://localhost:8000/api/restaurant/${this.$route.params.id}`;
+        }
+    },
     data() {
-        return {};
+        return {
+            store,
+            restaurant: {},
+        };
     },
-    methods: {},
-    created() {
+    methods: {
+
     },
-    components: { AppCardPlate }
+    mounted() {
+        store.callApi(this.ApiRestaurant)
+            .then((response) => {
+                this.restaurant = response.data.restaurant
+                console.log(this.restaurant);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+
+    },
+    components: {
+        AppCardPlate,
+    }
 }
 </script>
 
@@ -18,38 +40,31 @@ export default {
     <div class="bgSkyBlue">
         <div class="container">
             <div class="row">
-                <div class="p-0">
-                    <img class="img-fluid picture object-fit-cover"
-                        src="https://www.settimoristorante.it/wp-content/uploads/sites/106/2020/01/slide_home_sofitel_settimo_ristorante_terrazza2.jpg"
-                        alt="">
+                <div v-if=this.restaurant.photo class="p-0">
+                    <img class="img-fluid picture object-fit-cover" :src=this.restaurant.photo alt="">
+                </div>
+                <div v-else=this.restaurant.photo class="p-0">
+                    <div class="picture d-flex justify-content-center align-items-center">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
                 </div>
 
             </div>
             <div class="row py-3 text-center">
-                <h1>Nome ristorante</h1>
+                <h1>{{ restaurant.name }}</h1>
             </div>
-            <div class="row">
+            <div class="row text-primary">
                 MENU
             </div>
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
-                <div class="col">
-                    <AppCardPlate></AppCardPlate>
+                <div v-for="dish in this.restaurant.dishes" class="col">
+                    <AppCardPlate :price="dish.price" :name="dish.name" :description="dish.description"></AppCardPlate>
                 </div>
-                <!-- <div class="col">
-                    <AppCardPlate></AppCardPlate>
-                </div>
-                <div class="col">
-                    <AppCardPlate></AppCardPlate>
-                </div>
-                <div class="col">
-                    <AppCardPlate></AppCardPlate>
-                </div>
-                <div class="col">
-                    <AppCardPlate></AppCardPlate>
-                </div> -->
             </div>
             <div class="">
-                
+
             </div>
         </div>
     </div>
@@ -63,7 +78,7 @@ export default {
 .picture {
     width: 100%;
     height: 200px;
-    background-color: royalblue;
+    background-color: rgba(117, 118, 121, 0.432);
     border-radius: 0 0 20px 20px;
 }
 </style>

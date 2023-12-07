@@ -2,7 +2,7 @@
 import { store } from '../data/store';
 
 export default {
-    name: 'AppCategories',
+    name: 'AppPartialCategories',
     data() {
         return {
             store,
@@ -17,21 +17,28 @@ export default {
             } else {
 
             }
+        },
+        
+        goToSpecificCategory(index){
+            this.$router.push({
+                name: 'specifcCategory',
+                params: {id:index}
+            })
         }
     },
     mounted() {
         store.callApi(this.apiUrlCategories)
-        .then((response) => {
-            // console.log(response.data);
-            this.categories = response.data.types
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+            .then((response) => {
+                console.log(response.data);
+                this.categories = response.data.types
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     },
-    updated(){
+    updated() {
         this.removeItem(this.categories);
-    } 
+    }
 }
 
 </script>
@@ -45,11 +52,13 @@ export default {
         <div class="row row-cols-2 row-cols-md-4 justify-content-start row-gap-4 py-3 ">
 
             <div v-for="category in categories" class="littleSquare col p-0">
-                <button class="btn border-0 d-flex flex-column align-items-center">
-                    <div class="icon">
-                        <img class=" img-fluid" :key="category" :src="`/icon/` + category.name + `.png`" :alt=category.name>
-                    </div>
+                <button @click="goToSpecificCategory(category.id)" class="btn border-0 d-flex flex-column align-items-center">
+                        <div class="icon">
+                            <img class=" img-fluid" :key="category" :src="`/icon/` + category.name + `.png`"
+                                :alt=category.name>
+                        </div>
                     <p class="m-0">{{ category.name }}</p>
+                    <p class="m-0">{{ category.id }}</p>
                 </button>
             </div>
 

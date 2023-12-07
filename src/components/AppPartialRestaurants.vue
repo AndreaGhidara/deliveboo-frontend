@@ -2,7 +2,7 @@
 import { store } from '../data/store';
 
 export default {
-    name: 'AppCategories',
+    name: 'AppPartialRestaurants',
 
     data() {
         return {
@@ -14,6 +14,13 @@ export default {
     methods: {
         getTypes(restaurant) {
             return restaurant.types.map(type => type.name).join(', ');
+        },
+
+        goToSpecificRestaurant(index){
+            this.$router.push({
+                name: 'specificRestaurant',
+                params: {id:index}
+            })
         }
     },
     mounted() {
@@ -45,11 +52,11 @@ export default {
             <div class="col" v-for="restaurant in restaurants">
                 <div class="containerRestaurant w-100 py-3">
                     <div class="pt-2">
-                        <router-link class="nav-link" :to="{ name: 'specificRestaurant' }">
+                        <button @click="goToSpecificRestaurant(restaurant.id)" class="btn w-100">
                             <div class="logoRestaurant rounded">
                                 <img class="p-2" :src=restaurant.photo :alt=restaurant.name>
                             </div>
-                        </router-link>
+                        </button>
                     </div>
                     <div class="w-100 ps-2">
                             <h3 class="m-0">🛵{{ restaurant.name }}</h3>
