@@ -1,14 +1,32 @@
 <script>
 import AppCardPlate from '../components/AppCardPlate.vue';
+import { store } from '../data/store';
+
 
 
 export default {
     name: 'AppSpecificRestaurant',
     data() {
-        return {};
+        return {
+            store,
+            apiUrl : 'http://127.0.0.1:8000/api/restaurant/',
+            restaurant: {},
+
+        };
     },
-    methods: {},
+    methods: {
+        getRestaurantInfo(id) {
+            store.callApi(this.apiUrl+id).then((res) => {
+                this.restaurant = res.data.restaurant
+                console.log(res.data)
+            })
+        }
+    },
     created() {
+        this.getRestaurantInfo(this.$route.params.id)
+
+    },
+    mounted() {
     },
     components: { AppCardPlate }
 }
@@ -20,20 +38,20 @@ export default {
             <div class="row">
                 <div class="p-0">
                     <img class="img-fluid picture object-fit-cover"
-                        src="https://www.settimoristorante.it/wp-content/uploads/sites/106/2020/01/slide_home_sofitel_settimo_ristorante_terrazza2.jpg"
-                        alt="">
+                        :src="restaurant.photo"
+                        :alt="restaurant.name">
                 </div>
 
             </div>
             <div class="row py-3 text-center">
-                <h1>Nome ristorante</h1>
+                <h1>{{ restaurant.name }}</h1>
             </div>
             <div class="row">
                 MENU
             </div>
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
-                <div class="col">
-                    <AppCardPlate></AppCardPlate>
+                <div v-for="dish in restaurant.dishes" class="col">
+                    <AppCardPlate :dish="dish"></AppCardPlate>
                 </div>
                 <!-- <div class="col">
                     <AppCardPlate></AppCardPlate>

@@ -45,7 +45,7 @@ export default {
             <div class="col" v-for="restaurant in restaurants">
                 <div class="containerRestaurant w-100 py-3">
                     <div class="pt-2">
-                        <router-link class="nav-link" :to="{ name: 'specificRestaurant' }">
+                        <router-link class="nav-link" :to="{ name: 'specificRestaurant', params: {id: restaurant.id} }">
                             <div class="logoRestaurant rounded">
                                 <img class="p-2" :src=restaurant.photo :alt=restaurant.name>
                             </div>

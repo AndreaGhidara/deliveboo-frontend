@@ -3,6 +3,7 @@ import { store } from '../data/store';
 
 export default {
     name: 'AppCardPlate',
+    props: ['dish'],
     data() {
         return {
             store,
@@ -70,11 +71,11 @@ export default {
             <img src="https://image-tc.galaxy.tf/wijpeg-6vjfv3a8pbx39l41ud7x73arb/cover_wide.jpg?crop=0%2C0%2C1200%2C675"
                 class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Carbonara</h5>
-                <p class="card-text">Guanciale di maiale croccante, pecorino romano, uova, pepe nero</p>
+                <h5 class="card-title">{{ dish.name }}</h5>
+                <p class="card-text">{{ dish.description }}</p>
                 <div class="d-flex justify-content-between">
                     <div class="w-50">
-                        {{this.order.price}}&euro;
+                        {{dish.price}}&euro;
                     </div>
                     <div class="d-flex justify-content-between justify-content-sm-end  w-50">
                         <button @click="removeQuantity()" class="menu__icon text-white position-relative">

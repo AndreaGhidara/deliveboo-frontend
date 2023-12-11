@@ -30,7 +30,7 @@ const router = createRouter({
             component: AppCategories
         },
         {
-            path: '/specificRestaurant',
+            path: '/restaurant/:id?',
             name:'specificRestaurant',
             component: AppSpecificRestaurant
         },
