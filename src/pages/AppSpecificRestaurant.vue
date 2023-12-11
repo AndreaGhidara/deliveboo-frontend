@@ -60,7 +60,7 @@ export default {
             </div>
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
                 <div v-for="dish in this.restaurant.dishes" class="col">
-                    <AppCardPlate :price="dish.price" :name="dish.name" :description="dish.description"></AppCardPlate>
+                    <AppCardPlate :price="dish.price" :name="dish.name" :description="dish.description" :image="dish.image"></AppCardPlate>
                 </div>
             </div>
             <div class="">

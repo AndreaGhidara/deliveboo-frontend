@@ -6,7 +6,8 @@ export default {
     props: {
         name: String,
         description: String,
-        price: String
+        price: String,
+        image: String
     },
     data() {
         return {
@@ -72,8 +73,8 @@ export default {
 <template>
     <div>
         <div class="card border-0">
-            <img src="https://image-tc.galaxy.tf/wijpeg-6vjfv3a8pbx39l41ud7x73arb/cover_wide.jpg?crop=0%2C0%2C1200%2C675"
-                class="card-img-top" alt="...">
+            <img :src="image"
+                class="card-img-top fix-height" :alt="image">
             <div class="card-body">
                 <h5 class="card-title text-primary">{{ name }}</h5>
                 <p class="card-text">
@@ -108,6 +109,11 @@ export default {
 <style lang="scss" scoped>
 .card-img-top {
     border-radius: 10px;
+}
+
+.fix-height {
+    height: 234px;
+    object-fit: cover;
 }
 
 .card-text{
