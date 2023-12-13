@@ -4,6 +4,7 @@ import { store } from '../data/store';
 export default {
     name: 'AppCardPlate',
     props: {
+        id: Number,
         name: String,
         description: String,
         price: String,
@@ -16,7 +17,8 @@ export default {
                 quantity: 1,
                 name: this.name,
                 price: this.price,
-                image: this.image
+                image: this.image,
+                id: this.id
             }
         }
     },
