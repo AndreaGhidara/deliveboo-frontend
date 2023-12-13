@@ -47,7 +47,7 @@ export default {
                         <p v-if="store.cart.length == 0">Nessun ordine al momento</p>
                         <div v-else class="container">
                             <div v-for="product in store.cart">
-                                <AppOrderItem :name="product.name" :quantity="product.quantity" :price="product.price"></AppOrderItem>
+                                <AppOrderItem :image="product.image" :name="product.name" :quantity="product.quantity" :price="product.price"></AppOrderItem>
                             </div>
                         </div>
                     </div>

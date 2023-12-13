@@ -37,7 +37,7 @@ const router = createRouter({
             props:true
         },
         {
-            path: '/specifcCategory/:id',
+            path: '/specifcCategory/:id/:name',
             name:'specifcCategory',
             component: AppSpecificCategory,
             props:true

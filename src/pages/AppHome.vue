@@ -1,6 +1,6 @@
 <script>
-import AppRestaurants from '../components/AppPartialRestaurants.vue'
-import AppCategories from '../components/AppPartialCategories.vue'
+import AppPartialRestaurants from '../components/AppPartialRestaurants.vue'
+import AppPartialCategories from '../components/AppPartialCategories.vue'
 import AppHero from '../components/AppHero.vue'
 import axios from 'axios';
 
@@ -8,7 +8,7 @@ import axios from 'axios';
 export default {
     name: 'AppMain',
     components: {
-        AppHero, AppCategories, AppRestaurants
+        AppHero, AppPartialRestaurants, AppPartialCategories
     },
     data() {
         return {
@@ -31,11 +31,13 @@ export default {
         <div class="py-5 px-3">
             <AppHero></AppHero>
         </div>
+        <hr>
         <div class="py-5">
-            <AppCategories></AppCategories>
+            <AppPartialCategories></AppPartialCategories>
         </div>
+        <hr>
         <div>
-            <AppRestaurants></AppRestaurants>
+            <AppPartialRestaurants></AppPartialRestaurants>
         </div>
     </div>
 </template>

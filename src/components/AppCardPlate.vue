@@ -14,8 +14,9 @@ export default {
             store,
             order: {
                 quantity: 1,
-                name: "Carbonara",
-                price: 15.59,
+                name: this.name,
+                price: this.price,
+                image: this.image
             }
         }
     },

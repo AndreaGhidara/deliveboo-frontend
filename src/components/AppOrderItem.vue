@@ -7,6 +7,7 @@ export default {
         name:String,
         quantity:Number,
         price:Number,
+        image:String,
     },
     data() {
         return {
@@ -32,7 +33,7 @@ export default {
         <div class="col d-flex justify-content-between">
             <div class="pictureOrder d-flex">
                 <img class="img-fluid rounded-2"
-                    src="https://image-tc.galaxy.tf/wijpeg-6vjfv3a8pbx39l41ud7x73arb/cover_wide.jpg?crop=0%2C0%2C1200%2C675"
+                    :src=image
                     alt="">
                 
             </div>

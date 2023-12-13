@@ -19,10 +19,10 @@ export default {
             }
         },
         
-        goToSpecificCategory(index){
+        goToSpecificCategory(index,nameRestaurant){
             this.$router.push({
                 name: 'specifcCategory',
-                params: {id:index}
+                params: {id:index, name:nameRestaurant}
             })
         }
     },
@@ -51,8 +51,8 @@ export default {
         </div>
         <div class="row row-cols-2 row-cols-md-4 justify-content-start row-gap-4 py-3 ">
 
-            <div v-for="category in categories" class="littleSquare col p-0">
-                <button @click="goToSpecificCategory(category.id)" class="btn border-0 d-flex flex-column align-items-center">
+            <div v-motion-roll-left v-motion-slide-visible-left v-for="category in categories" class="littleSquare col p-0">
+                <button @click="goToSpecificCategory(category.id,category.name)" class="btn border-0 d-flex flex-column align-items-center">
                         <div class="icon">
                             <img class=" img-fluid" :key="category" :src="`/icon/` + category.name + `.png`"
                                 :alt=category.name>
