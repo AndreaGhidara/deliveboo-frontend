@@ -4,6 +4,7 @@ import { store } from '../data/store';
 export default {
     name: 'AppOrderItem',
     props:{
+        id:Number,
         name:String,
         quantity:Number,
         price:Number,

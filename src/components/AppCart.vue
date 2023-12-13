@@ -1,6 +1,8 @@
 <script>
 import { store } from '../data/store';
 import AppOrderItem from './AppOrderItem.vue';
+import Payment from '../components/Payment.vue';
+
 
 export default {
     name: 'AppCart',
@@ -15,7 +17,10 @@ export default {
     },
     created() {
     },
-    components: { AppOrderItem }
+    components: { 
+        AppOrderItem,
+        Payment
+     }
 }
 
 </script>
@@ -47,18 +52,20 @@ export default {
                         <p v-if="store.cart.length == 0">Nessun ordine al momento</p>
                         <div v-else class="container">
                             <div v-for="product in store.cart">
-                                <AppOrderItem :image="product.image" :name="product.name" :quantity="product.quantity" :price="product.price"></AppOrderItem>
+                                <AppOrderItem :id="product.id" :image="product.image" :name="product.name" :quantity="product.quantity" :price="product.price"></AppOrderItem>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer d-flex justify-content-between">
                         {{ store.totalCartPrice.toFixed(2) }}
-                        <button type="button" class="btn btn-primary">Vai al pagemnto</button>
+                        <button @click="store.paymentSession = true" type="button" data-bs-dismiss="modal" class="btn btn-primary">Vai al pagamento</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <Payment v-if="store.paymentSession"></Payment>
+
 </template>
 
 
